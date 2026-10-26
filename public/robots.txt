@@ -1,0 +1,3 @@
+# Nile Private Language Schools
+User-agent: *
+Allow: /

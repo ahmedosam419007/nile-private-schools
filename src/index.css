@@ -1,0 +1,85 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+@theme {
+  --font-sans: "Cairo Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-navy: #06182e;
+  --color-navy-deep: #0b2e4f;
+  --color-nile: #0b4f7a;
+  --color-sky: #3aa8dc;
+  --color-sky-pale: #bfe9ff;
+  --color-sand: #f5f1e8;
+  --color-brand-red: #d7262e;
+  --color-gold: #c9a24a;
+}
+
+@layer base {
+  html {
+    min-height: 100%;
+    scroll-behavior: auto;
+    /* Single source of truth for anchor offset: Lenis subtracts this when it
+       computes a scrollTo target, and the browser applies it natively for
+       fallback `scrollIntoView`. Header is 80px + progress bar. */
+    scroll-padding-top: 5.5rem;
+    background: var(--color-navy);
+    color-scheme: dark;
+  }
+
+  body {
+    min-width: 320px;
+    min-height: 100%;
+    margin: 0;
+    overflow-x: clip;
+    background: var(--color-navy);
+    color: var(--color-sand);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  #root {
+    min-height: 100%;
+  }
+
+  :where(a, button):focus-visible {
+    outline: 2px solid var(--color-sky);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--color-sky);
+    color: var(--color-navy);
+  }
+}
+
+.hero-surface {
+  background-color: var(--color-navy);
+  background-image:
+    radial-gradient(ellipse at 50% -10%, rgb(58 168 220 / 0.22), transparent 58%),
+    radial-gradient(ellipse at 50% 110%, rgb(11 79 122 / 0.34), transparent 62%);
+}
+
+@keyframes hero-shimmer {
+  0% {
+    transform: translate3d(-14%, 0, 0);
+  }
+  50% {
+    transform: translate3d(14%, 0, 0);
+  }
+  100% {
+    transform: translate3d(-14%, 0, 0);
+  }
+}
+
+.hero-shimmer {
+  animation: hero-shimmer 16s ease-in-out infinite;
+  opacity: 0.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-shimmer {
+    animation: none;
+    opacity: 0.35;
+  }
+}
