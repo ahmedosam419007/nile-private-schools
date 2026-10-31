@@ -19,7 +19,11 @@ export function Hero() {
 
   useGSAP(
     () => {
-      if (prefersReducedMotion) return
+      if (prefersReducedMotion) {
+        // Reverting an in-flight intro must not leave content at opacity 0.
+        gsap.set('[data-hero-intro]', { clearProps: 'all' })
+        return
+      }
 
       gsap.from('[data-hero-intro]', {
         autoAlpha: 0,

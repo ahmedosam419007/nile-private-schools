@@ -1,5 +1,6 @@
+import { MapPin } from 'lucide-react'
 import { useRef } from 'react'
-import { aboutSection, school } from '../../data/school'
+import { aboutSection, contactSection, school } from '../../data/school'
 import { AboutSceneSlot } from '../about/AboutSceneSlot'
 import { SectionHeading } from './SectionHeading'
 import { useSectionReveal } from './useSectionReveal'
@@ -105,34 +106,67 @@ export function AboutSection() {
         </div>
       </div>
 
-      <div data-reveal className="mx-auto mt-20 w-full max-w-6xl">
-        <figure className="relative overflow-hidden rounded-[2rem] border border-gold/20 bg-navy-deep/40 shadow-2xl shadow-navy/60 ring-1 ring-white/5">
-          <img
-            src={school.buildingImage}
-            alt="مبنى مدارس النيل الخاصة للغات"
-            loading="eager"
-            decoding="async"
-            className="block h-[260px] w-full object-cover object-center sm:h-[360px] lg:h-[460px]"
+      <div data-reveal className="mx-auto mt-16 w-full max-w-5xl">
+        <figure className="relative overflow-hidden rounded-[2rem] border border-gold/25 bg-gradient-to-b from-navy-deep/75 via-navy-deep/45 to-navy/70 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)] ring-1 ring-white/5">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_15%_0%,rgba(58,168,220,0.18),transparent_55%),radial-gradient(ellipse_at_85%_100%,rgba(201,162,74,0.14),transparent_55%)]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute inset-0 bg-gradient-to-t from-navy/85 via-navy/15 to-transparent"
+            className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-gold/45 to-transparent"
           />
-          <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 px-6 py-6 sm:px-10 sm:py-8">
-            <span className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gold/90">
-              Campus
-            </span>
-            <span className="text-lg font-extrabold text-sand sm:text-2xl">
-              {school.name.ar}
-            </span>
-            <span
-              lang="en"
-              dir="ltr"
-              className="text-xs text-sand/60 sm:text-sm"
-            >
-              {school.address.en}
-            </span>
-          </figcaption>
+
+          <div className="relative grid items-center gap-9 p-6 sm:gap-12 sm:p-10 lg:grid-cols-[minmax(0,340px)_1fr] lg:p-14">
+            <div className="relative mx-auto aspect-square w-full max-w-[300px] sm:max-w-[340px]">
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-4 rounded-full bg-[radial-gradient(circle,rgba(58,168,220,0.32),transparent_68%)] blur-2xl"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -inset-3 rounded-full border border-dashed border-gold/35"
+              />
+              <img
+                src={school.buildingImage}
+                alt="مبنى مدارس النيل الخاصة للغات"
+                loading="eager"
+                decoding="async"
+                className="absolute inset-0 h-full w-full rounded-full object-cover ring-1 ring-gold/50"
+              />
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 rounded-full shadow-[inset_0_0_50px_rgba(6,24,46,0.55)]"
+              />
+            </div>
+
+            <figcaption className="text-center lg:text-start">
+              <span className="text-[0.68rem] font-semibold uppercase tracking-[0.32em] text-gold/90">
+                CAMPUS
+              </span>
+              <h3 className="mt-3 text-2xl font-extrabold text-sand sm:text-3xl">
+                {school.name.ar}
+              </h3>
+              <p
+                lang="en"
+                className="mt-1.5 text-xs font-medium uppercase tracking-[0.18em] text-sand/50 sm:text-sm"
+              >
+                {school.name.en}
+              </p>
+              <p className="mt-5 text-sm leading-7 text-sand/65 sm:text-base">
+                {school.address.ar}
+              </p>
+              <a
+                href={school.links.location}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-6 inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-gold/40 bg-white/[0.04] px-6 py-2.5 text-sm font-bold text-sand transition-colors duration-300 hover:border-gold/70 hover:bg-white/[0.08]"
+              >
+                <MapPin size={16} strokeWidth={2} aria-hidden="true" />
+                {contactSection.actions.map}
+              </a>
+            </figcaption>
+          </div>
         </figure>
       </div>
     </section>
